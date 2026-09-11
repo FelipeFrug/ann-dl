@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ann-dl — Redes Neurais | Insper 2026.2</title>
+<style>
+  :root {
+    --fundo: #ffffff; --texto: #1a1d21; --suave: #5b6470;
+    --borda: #e3e6ea; --destaque: #1f6feb; --cartao: #f7f8fa;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fundo: #0f1216; --texto: #e6e9ee; --suave: #9aa4b2;
+      --borda: #262c34; --destaque: #58a6ff; --cartao: #161b22;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 3rem 1.25rem 5rem;
+    background: var(--fundo); color: var(--texto);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; }
+  .rotulo {
+    font-size: .8rem; letter-spacing: .09em; text-transform: uppercase;
+    color: var(--suave); margin: 0 0 .4rem;
+  }
+  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 .6rem; }
+  .sub { color: var(--suave); margin: 0 0 2.5rem; }
+  h2 {
+    font-size: .8rem; letter-spacing: .09em; text-transform: uppercase;
+    color: var(--suave); margin: 0 0 .9rem; font-weight: 600;
+  }
+  a.cartao {
+    display: block; padding: 1.15rem 1.3rem; margin-bottom: .75rem;
+    background: var(--cartao); border: 1px solid var(--borda);
+    border-radius: 10px; text-decoration: none; color: inherit;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  a.cartao:hover { border-color: var(--destaque); transform: translateY(-1px); }
+  .titulo-cartao { font-weight: 600; margin-bottom: .3rem; }
+  .desc { color: var(--suave); font-size: .93rem; }
+  .tags { margin-top: .6rem; display: flex; flex-wrap: wrap; gap: .4rem; }
+  .tag {
+    font-size: .75rem; padding: .15rem .5rem; border-radius: 999px;
+    border: 1px solid var(--borda); color: var(--suave);
+  }
+  footer {
+    margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid var(--borda);
+    color: var(--suave); font-size: .88rem;
+  }
+  footer a { color: var(--destaque); }
+</style>
+</head>
+<body>
+<main>
+  <p class="rotulo">Insper · 2026.2</p>
+  <h1>Redes Neurais</h1>
+  <p class="sub">Entregas da disciplina — Felipe Frug</p>
+
+  <h2>Atividades</h2>
+
+  <a class="cartao" href="exercises/data/">
+    <div class="titulo-cartao">Data &middot; Geometria e Preparação de Dados</div>
+    <div class="desc">
+      Nuvens de pontos em 2D, não-linearidade em 5D e pré-processamento do
+      Spaceship Titanic para uma rede com ativação <code>tanh</code>.
+    </div>
+    <div class="tags">
+      <span class="tag">Exercício 1 — Point clouds</span>
+      <span class="tag">Exercício 2 — Non-linearity in 5D</span>
+      <span class="tag">Exercício 3 — Real-world data</span>
+    </div>
+  </a>
+
+  <footer>
+    Páginas geradas a partir de notebooks Jupyter com
+    <code>nbconvert</code>. Código em
+    <a href="https://github.com/FelipeFrug/ann-dl">github.com/FelipeFrug/ann-dl</a>.
+  </footer>
+</main>
+</body>
+</html>
