@@ -9,6 +9,7 @@ Entregas da disciplina, publicadas com GitHub Pages.
 | Atividade | Página publicada | Fonte |
 |---|---|---|
 | **Data** — Geometria e Preparação de Dados | https://felipefrug.github.io/ann-dl/exercises/data/ | [`exercises/data/`](exercises/data/) |
+| **Perceptron** — Separabilidade e Limitações | https://felipefrug.github.io/ann-dl/exercises/perceptron/ | [`exercises/perceptron/`](exercises/perceptron/) |
 
 A atividade *Data* reúne três exercícios em uma página única:
 
@@ -21,6 +22,15 @@ A atividade *Data* reúne três exercícios em uma página única:
   `log(1+x)`, padronização) para uma rede com ativação `tanh`.
 - **Resumo dos resultados** ao final, cobrindo os três exercícios.
 
+A atividade *Perceptron* treina o mesmo perceptron, escrito do zero, em dois
+datasets:
+
+- **Exercício 1 — Dados separáveis:** convergência, o efeito de $\eta$ e a prova
+  de que, partindo de $\mathbf{w} = \mathbf{0}$, $\eta$ só reescala os pesos.
+- **Exercício 2 — Dados sobrepostos:** pesos finais (~50%) × algoritmo *pocket*
+  (~71%), e por que nem mais épocas nem um $\eta$ menor resolvem.
+- **Resumo dos resultados** com a tabela pedida no enunciado.
+
 ## Estrutura do repositório
 
 ```
@@ -30,10 +40,13 @@ A atividade *Data* reúne três exercícios em uma página única:
 ├── requirements.txt                  numpy, pandas, matplotlib, scikit-learn, jupyter
 ├── .nojekyll                         serve o HTML como está, sem passar pelo Jekyll
 └── exercises/
-    └── data/
-        ├── index.ipynb               fonte: gera os dados, calcula e analisa
-        ├── index.html                notebook executado — é o que o Pages serve
-        └── dataset/train.csv         dados do Exercício 3
+    ├── data/
+    │   ├── index.ipynb               fonte: gera os dados, calcula e analisa
+    │   ├── index.html                notebook executado — é o que o Pages serve
+    │   └── dataset/train.csv         dados do Exercício 3
+    └── perceptron/
+        ├── index.ipynb               fonte: perceptron do zero + pocket
+        └── index.html                notebook executado
 ```
 
 ## Regerando uma página
@@ -43,7 +56,7 @@ A atividade *Data* reúne três exercícios em uma página única:
 ```
 
 Constrói `exercises/data` por padrão; passe outro caminho para construir outro
-exercício (`./build.sh exercises/outro`). O script cria o `.venv` na primeira
+exercício (`./build.sh exercises/perceptron`). O script cria o `.venv` na primeira
 execução e roda `jupyter nbconvert --to html --execute`, que executa o notebook
 do zero e embute as figuras (PNG em base64) no HTML. O arquivo é autocontido:
 não depende de nenhum asset externo, exceto o MathJax (CDN) para renderizar as
@@ -85,8 +98,13 @@ Kaggle — o único arquivo rotulado. Está versionado em
   completo;
 - bibliotecas de análise: `numpy`, `pandas`, `matplotlib` e `scikit-learn` —
   este último só para o `PCA` do Exercício 2 e o pré-processamento do
-  Exercício 3. **Nenhum modelo é treinado.** O `jupyter`/`nbconvert` entra
-  apenas como ferramenta de build.
+  Exercício 3 da atividade *Data*. **Nenhum modelo é treinado** nessa atividade.
+  O `jupyter`/`nbconvert` entra apenas como ferramenta de build;
+- na atividade *Perceptron* só entram `numpy`, `pandas` e `matplotlib`: a
+  ativação, a predição, a regra de atualização e o laço de treino são escritos à
+  mão, sem scikit-learn. As amostras são percorridas na ordem em que foram
+  geradas (Classe 0 e depois Classe 1), sem embaralhar. O efeito dessa escolha
+  é medido no próprio relatório.
 
 ## Uso de IA
 

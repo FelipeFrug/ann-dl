@@ -3,12 +3,19 @@
 # executando o notebook do zero.
 #
 #   ./build.sh                      # constrói exercises/data
-#   ./build.sh exercises/outro      # constrói outro exercício
+#   ./build.sh exercises/perceptron # constrói outro exercício
 set -euo pipefail
 cd "$(dirname "$0")"
 
 EXERCICIO="${1:-exercises/data}"
-TITULO_PADRAO="Exercícios 1–3 — Geometria e Preparação de Dados | Redes Neurais"
+EXERCICIO="${EXERCICIO%/}"
+
+# <title> da página publicada, por exercício
+case "$EXERCICIO" in
+  exercises/data)       TITULO_PADRAO="Exercícios 1–3 — Geometria e Preparação de Dados | Redes Neurais" ;;
+  exercises/perceptron) TITULO_PADRAO="Perceptron — Separabilidade e Limitações | Redes Neurais" ;;
+  *)                    TITULO_PADRAO="$(basename "$EXERCICIO") | Redes Neurais" ;;
+esac
 
 if [ ! -f "$EXERCICIO/index.ipynb" ]; then
   echo "erro: $EXERCICIO/index.ipynb não encontrado" >&2
