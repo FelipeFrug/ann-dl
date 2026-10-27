@@ -14,6 +14,7 @@ EXERCICIO="${EXERCICIO%/}"
 case "$EXERCICIO" in
   exercises/data)       TITULO_PADRAO="Exercícios 1–3 — Geometria e Preparação de Dados | Redes Neurais" ;;
   exercises/perceptron) TITULO_PADRAO="Perceptron — Separabilidade e Limitações | Redes Neurais" ;;
+  exercises/mlp)        TITULO_PADRAO="MLP — O que uma camada oculta compra | Redes Neurais" ;;
   *)                    TITULO_PADRAO="$(basename "$EXERCICIO") | Redes Neurais" ;;
 esac
 

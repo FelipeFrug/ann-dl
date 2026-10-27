@@ -10,6 +10,7 @@ Entregas da disciplina, publicadas com GitHub Pages.
 |---|---|---|
 | **Data** — Geometria e Preparação de Dados | https://felipefrug.github.io/ann-dl/exercises/data/ | [`exercises/data/`](exercises/data/) |
 | **Perceptron** — Separabilidade e Limitações | https://felipefrug.github.io/ann-dl/exercises/perceptron/ | [`exercises/perceptron/`](exercises/perceptron/) |
+| **MLP** — O que uma camada oculta compra | https://felipefrug.github.io/ann-dl/exercises/mlp/ | [`exercises/mlp/`](exercises/mlp/) |
 
 A atividade *Data* reúne três exercícios em uma página única:
 
@@ -31,6 +32,19 @@ datasets:
   (~71%), e por que nem mais épocas nem um $\eta$ menor resolvem.
 - **Resumo dos resultados** com a tabela pedida no enunciado.
 
+A atividade *MLP* usa um único MLP escrito do zero em NumPy (tamanhos das camadas
+como argumento) em quatro exercícios:
+
+- **Exercício 1 — Retropropagação na mão:** passagem direta, gradientes e
+  atualização de uma rede $2 \to 2 \to 1$ com `tanh`, com 6 casas decimais.
+- **Exercício 2 — Binário não linear:** regressão logística (47,5%) × MLP
+  $2 \to 8 \to 1$ (91,5%) e a fronteira em faixa que nenhuma reta produz.
+- **Exercício 3 — Multiclasse:** o mesmo núcleo, trocando só a cabeça (softmax +
+  entropia cruzada), com a derivação de $\partial L/\partial u = p - y$.
+- **Exercício 4 — Profundidade:** 1 × 2 camadas ocultas em 5 sementes pareadas;
+  a profunda ajusta melhor o treino, mas empata no teste.
+- **Resumo dos resultados** com a tabela pedida no enunciado.
+
 ## Estrutura do repositório
 
 ```
@@ -44,8 +58,11 @@ datasets:
     │   ├── index.ipynb               fonte: gera os dados, calcula e analisa
     │   ├── index.html                notebook executado — é o que o Pages serve
     │   └── dataset/train.csv         dados do Exercício 3
-    └── perceptron/
-        ├── index.ipynb               fonte: perceptron do zero + pocket
+    ├── perceptron/
+    │   ├── index.ipynb               fonte: perceptron do zero + pocket
+    │   └── index.html                notebook executado
+    └── mlp/
+        ├── index.ipynb               fonte: MLP do zero, Exercícios 1–4
         └── index.html                notebook executado
 ```
 
@@ -105,6 +122,11 @@ Kaggle — o único arquivo rotulado. Está versionado em
   mão, sem scikit-learn. As amostras são percorridas na ordem em que foram
   geradas (Classe 0 e depois Classe 1), sem embaralhar. O efeito dessa escolha
   é medido no próprio relatório.
+- na atividade *MLP*, o scikit-learn entra só onde o enunciado permite
+  (`make_blobs`, `make_classification`, `train_test_split`, `confusion_matrix` e a
+  `LogisticRegression` das linhas de base). O `rng` global inicializa a rede do
+  Exercício 2 e sorteia as 5 sementes dos Exercícios 3 e 4; cada semente alimenta
+  um gerador próprio para que as redes rasa e profunda partam do mesmo ponto.
 
 ## Uso de IA
 
